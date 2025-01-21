@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+nextjs-portal,
+webhighlights-marker,
+#webhighlights-notifications {
+    display: none;
+}
+
+
+body {
+    background-color: #000;
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    color: white;
+}
+
+.homeContainer {
+    display: grid;
+    /* Sayfa 3 e ayrılır
+    soldan 1fr 
+    ortada min 1440px ve max 94% kaplayacak alan ve 
+    en sağda yine 1fr boşluk olacak şekilde tanımlanır*/
+    grid-template-columns: 1fr min(1440px, 90%) 1fr;
+    /*
+    Header 96px
+    Main alanı auto
+    Footer 72px
+    */
+    grid-template-rows: 96px 90% 72px;
+}
+
+.homeContainer>* {
+    /*container altındaki tüm elemanları 2. kolona alıyoruz yani tanımladığımız min(1440px,94%) alan*/
+    grid-column: 2;
+}
+
+.fluid{
+    /*Bu 1 / -1 tüm sütunu kapsaması gerektiğini söyler*/
+    /*Yukarıda yazdığımız 1fr ... 1fr boşlukları yok sayarve tüm satır kaplanır*/
+    /*28. satırdaki 2 ise orta alana tanımlanan değer kadar alan kaplaması için yazılmıştır*/
+    grid-column: 1 / -1;
+}
