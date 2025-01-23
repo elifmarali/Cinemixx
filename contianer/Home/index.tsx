@@ -28,17 +28,17 @@ function HomeContainer() {
   useEffect(() => {
     async function fetchMovies() {
       try {
-        const res: any = getMoviesList({type:"Popular Films"});
-        const res2: any = getMoviesList({type:"Your Favorites"});
-        const res3: any = getMoviesList({type:"Most Rated"});
+        const res: any = getMoviesList({ type: "Popular Films" });
+        const res2: any = getMoviesList({ type: "Your Favorites" });
+        const res3: any = getMoviesList({ type: "Most Rated" });
         const [resPopular, resFavorites, resRated] = await Promise.all([
           res,
           res2,
           res3,
         ]);
-        setPopularFilmList(resPopular.slice(0,7) || []);
-        setFavoriteFilmList(resFavorites.slice(0,7) || []);
-        setMostRated(resRated.slice(0,7) || []);
+        setPopularFilmList(resPopular.slice(0, 7) || []);
+        setFavoriteFilmList(resFavorites.slice(0, 7) || []);
+        setMostRated(resRated.slice(0, 7) || []);
       } catch (err: any) {
         console.error("ERR FetchMovies : ", err.message);
       }
@@ -47,12 +47,13 @@ function HomeContainer() {
   }, []);
   return (
     <div className={styles.containerHome}>
-      <BannerSection contentType={false} random={true}/>
+      <BannerSection contentType={false} random={true} />
       <div className={styles.bottomSection}>
         <GenresList />
-        <FilmList list={filmList} type="multiple"/>
+        <FilmList list={filmList} type="multiple" />
       </div>
     </div>
+
   );
 }
 

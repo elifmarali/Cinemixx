@@ -11,7 +11,7 @@ import Link from "next/link";
 
 function BannerSection({ contentType, random, param }: any) {
   const [firstPopularFilm, setFirstPopularFilm] = useState<IBanner>();
-
+  
   useEffect(() => {
     document.documentElement.style.setProperty("--content-type", contentType ? "80%" : "66%");
     async function fetchFirstMovies() {

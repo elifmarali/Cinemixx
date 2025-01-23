@@ -1,15 +1,18 @@
 "use client";
 import styles from "@/components/Header/styles.module.css";
+import { useAddModalContext } from "@/context/AddFilmModal";
 import "@/styles/globals.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
+import AddFilmModal from "../AddFilmModal";
 
 function Header() {
   const pathname = usePathname();
   const [activePath, setActivePath] = useState(pathname);
+  const { openModal } = useAddModalContext();
 
   useEffect(() => {
     setActivePath(pathname);
@@ -17,6 +20,7 @@ function Header() {
 
   return (
     <header className={`${styles.header} fluid`}>
+      <AddFilmModal/>
       <div className="flex justify-center items-center w-full">
         <div className="flex justify-between items-center py-3 transition ease-in-out delay-150 py-5 w-full max-w-[90%]">
           {" "}
@@ -53,8 +57,11 @@ function Header() {
               Kids
             </Link>
           </nav>
-          <div className={`rounded-full ${styles.border} cursor-pointer `}>
-            <IoMdAdd className="text-[22px]"/>
+          <div
+            className={`rounded-full ${styles.border} cursor-pointer`}
+            onClick={() => openModal()}
+          >
+            <IoMdAdd className="text-[22px]" />
           </div>
         </div>
       </div>
