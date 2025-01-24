@@ -17,8 +17,8 @@ export const getMoviesList = async ({
   genres,
 }: {
   type?: string;
-  genres?:any
-}) => {  
+  genres?: any;
+}) => {
   const dataAll = await fetchData(MOVIES_API_URL);
 
   if (!dataAll || dataAll.length === 0) {
@@ -40,20 +40,34 @@ export const getMoviesList = async ({
 
   if (genres) {
     const genreNumber = parseInt(genres, 10);
-    if(!isNaN(genreNumber)){
+    if (!isNaN(genreNumber)) {
       return dataAll.filter((movie: any) =>
         movie.genre_ids.some((genre: any) => genre.toString() === genres)
       );
-    }
-    else if(genres==="movies"){
+    } else if (genres === "movies") {
       return dataAll;
-    }
-    else if(genres==="series"){
-      return dataAll.filter((item:any)=> item.genre_ids.some((itemGenre:any)=> itemGenre===10751));
-    }
-    else if(genres==="kids"){
-      return dataAll.filter((item:any)=> item.genre_ids.some((itemGenre:any)=> itemGenre===16 || itemGenre===10751 || itemGenre===14|| itemGenre===18));
+    } else if (genres === "series") {
+      return dataAll.filter((item: any) =>
+        item.genre_ids.some((itemGenre: any) => itemGenre === 10751)
+      );
+    } else if (genres === "kids") {
+      return dataAll.filter((item: any) =>
+        item.genre_ids.some(
+          (itemGenre: any) =>
+            itemGenre === 16 ||
+            itemGenre === 10751 ||
+            itemGenre === 14 ||
+            itemGenre === 18
+        )
+      );
     }
   }
   return dataAll;
+};
+
+export const createID = async () => {
+  const dataAll = await fetchData(MOVIES_API_URL);
+  const sortedList = dataAll.sort((a: any, b: any) => b.id - a.id);
+  const newId = Number(sortedList[0].id) + 1;
+  return newId;
 };

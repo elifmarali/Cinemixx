@@ -19,6 +19,7 @@ function FilmList({ list, type }: { list: any[]; type: string }) {
                       width={type === "multiple" ? 180 : 400}
                       height={type === "multiple" ? 210 : 300}
                       loading="lazy"
+                      className="transform transition-transform duration-300 hover:scale-110"
                     />
                   </Link>
                 ))}
@@ -34,6 +35,7 @@ function FilmList({ list, type }: { list: any[]; type: string }) {
                 width={180}
                 height={210}
                 loading="lazy"
+                className="transform transition-transform duration-300 hover:scale-110"
               />
             </Link>
           ))

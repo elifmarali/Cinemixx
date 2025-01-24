@@ -1,4 +1,3 @@
-"use client";
 import  {AddModalProvider}  from "@/context/AddFilmModal/index";
 
 function Providers({ children }) {

@@ -7,7 +7,6 @@ import { Metadata } from "next";
 import Providers from "@/context/providers";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -31,8 +30,6 @@ export default function RootLayout({
           </body>
         </Providers>
       </AppRouterCacheProvider>
-
     </html >
-
   );
 }

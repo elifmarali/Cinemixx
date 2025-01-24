@@ -47,7 +47,7 @@ function HomeContainer() {
   }, []);
   return (
     <div className={styles.containerHome}>
-      <BannerSection contentType={false} random={true} />
+     <BannerSection contentType={false} random={true} />
       <div className={styles.bottomSection}>
         <GenresList />
         <FilmList list={filmList} type="multiple" />

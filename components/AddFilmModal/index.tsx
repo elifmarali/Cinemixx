@@ -1,11 +1,9 @@
-import React from 'react';
+"use client";
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import { IoClose } from 'react-icons/io5';
 import { useAddModalContext } from '@/context/AddFilmModal';
 import AddFilmForm from '../AddFilmForm';
-
-// Modal'ın ana elementini belirtiyoruz
-Modal.setAppElement('#__next');
 
 const customStyles = {
   overlay: {
@@ -22,14 +20,21 @@ const customStyles = {
     zIndex: 1010,
     minWidth: '50vw',
     minHeight: '40vh',
-    backgroundColor: '#a1a1a1',
     border: 'none',
     borderRadius: '10px',
+    background: `var(--addMovie)`,
   },
 };
 
 function AddFilmModal() {
   const { addModal, closeModal } = useAddModalContext();
+
+  useEffect(() => {
+    if (!addModal) {
+      document.documentElement.style.setProperty("--addMovie", "linear-gradient(0.25turn, #7d7d7d, #a8a8a8, #bfbfbf)");
+    }
+  }, [addModal]);
+
 
   return (
     <Modal
