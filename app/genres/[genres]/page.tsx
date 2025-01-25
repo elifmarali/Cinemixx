@@ -25,11 +25,11 @@ function GenresItem({ params }: any) {
 
   useEffect(() => {
     if (genresList.length > 0) {
-      if (typeof genresParams === "object" && genresParams.genres) {
+      if (genresParams.genres) {
         const formattedGenres = genresParams.genres.trim();
         if (
-          genresList.some((genresItem) =>
-            genresItem.id === formattedGenres
+          genresList?.some(
+            (genresItem) => genresItem.id === Number(formattedGenres)
           )
         ) {
           getList(formattedGenres);
@@ -44,10 +44,14 @@ function GenresItem({ params }: any) {
 
   const getList = async (id: any) => {
     const data = await getMoviesList({ genres: id });
-    setFilmList(data)
-  }
+    setFilmList(data);
+  };
 
-  return <div><FilmList list={filmList} type="single"></FilmList></div >;
+  return (
+    <div>
+      <FilmList list={filmList} type="single"></FilmList>
+    </div>
+  );
 }
 
 export default GenresItem;

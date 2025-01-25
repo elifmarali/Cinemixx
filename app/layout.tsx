@@ -5,13 +5,14 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Metadata } from "next";
 import Providers from "@/context/providers";
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Netfilm",
-  description: "Stream the latest movies, TV shows, and exclusive series on Netfilm. Enjoy unlimited entertainment on any device, anytime, anywhere."
+  description:
+    "Stream the latest movies, TV shows, and exclusive series on Netfilm. Enjoy unlimited entertainment on any device, anytime, anywhere.",
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.className}>
-      <AppRouterCacheProvider>
+      <AppRouterCacheProvider options={{ key: "css" }}>
         <Providers>
           <body className="homeContainer">
             <Header />
@@ -30,6 +31,6 @@ export default function RootLayout({
           </body>
         </Providers>
       </AppRouterCacheProvider>
-    </html >
+    </html>
   );
 }
