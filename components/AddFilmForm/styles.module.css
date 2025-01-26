@@ -1,14 +1,14 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+  gap: 4px;
+  padding: 0 10px;
   align-items: flex-end;
   width: 100%;
 }
 
 .formItem {
-  display: flex !important;
+  display: flex;
   flex-direction: row !important;
   align-items: center;
   justify-content: space-between;
@@ -17,15 +17,18 @@
 
 .formLabel {
   width: 30%;
-  font-size: 20px;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .formInput {
   width: 60%;
   border-radius: 6px;
-  padding: 5px;
   color: rgb(44, 44, 44);
+}
+
+.formCheckbox {
+  width: 61%;
+  display: flex !important;
+  justify-content: flex-start !important;
 }
 
 .formInput:focus {
@@ -36,7 +39,7 @@
 .addButton {
   background-color: #039e75;
   width: 15vw;
-  height: 8vh;
+  height: 6vh;
   border-radius: 10px;
   font-size: 18px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -55,7 +58,7 @@
 
 .addButton,
 .addButton:after {
-  background-size: 300%;
+  background-size: 320%;
   background-position: 100%;
   transition: 1s, font-size 0.2s;
 }

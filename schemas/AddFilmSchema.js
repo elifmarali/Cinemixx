@@ -1,12 +1,29 @@
 import * as yup from "yup";
 
-export const validationSchema = yup.object({
-  email: yup
-    .string("Enter your email")
-    .email("Enter a valid email")
-    .required("Email is required"),
-  firstName: yup
-    .string("Enter your password")
-    .min(4, "Password should be of minimum 8 characters length")
-    .required("Password is required"),
+export const validationSchema = yup.object().shape({
+  adult: yup.boolean().required(),
+  genres_ids: yup
+    .array()
+    .of(yup.number().required())
+    .min(1, "You must select at least 1 genre"),
+  original_language: yup
+    .string()
+    .oneOf(["en", "tr"], "Invalid language")
+    .required("You must select a language"),
+  original_title: yup.string().required("Original title is required"),
+  overview: yup.string().nullable(),
+  popularity: yup
+    .number()
+    .typeError("You must enter a valid number")
+    .nullable(),
+  release_date: yup
+    .date()
+    .typeError("You must enter a valid date")
+    .nullable(),
+  title: yup.string().required("You must enter a title"),
+  video: yup.boolean(),
+  vote: yup
+    .number()
+    .typeError("You must enter a valid number")
+    .nullable(),
 });
