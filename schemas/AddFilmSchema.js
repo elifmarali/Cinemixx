@@ -26,4 +26,15 @@ export const validationSchema = yup.object().shape({
     .number()
     .typeError("You must enter a valid number")
     .nullable(),
+  file: yup
+    .mixed() // Dosya doğrulama için kullanılır
+    .nullable() // file alanının başta null olabilmesini sağlar
+    .required("File is required")
+    .test("fileSize", "File size is too large", (value) => {
+      return value ? value.size <= 2 * 1024 * 1024 : true; // Boyut sınırı koyduk - 2MB sınırı
+    })
+    .test("fileType", "Unsupported file format", (value) => {
+      return value
+        ? ["image/jpeg", "image/png", "application/pdf"].includes(value.type) : true; // Tip sınırı - JPEG , PNG , PDF türünde dosyalar ekleyebiliriz
+    })
 });

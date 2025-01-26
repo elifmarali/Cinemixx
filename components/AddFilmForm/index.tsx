@@ -14,6 +14,7 @@ import { getGenresList } from "@/services/Genres";
 import { Checkbox, TextField, Typography } from "@mui/material";
 import { IInitialValues, ILanguage } from "./IProps";
 import { DatePicker } from "@mui/x-date-pickers";
+import { MuiFileInput } from "mui-file-input";
 
 const AddFilmForm = () => {
   const [genresList, setGenresList] = useState<IGenres[]>([]);
@@ -48,6 +49,7 @@ const AddFilmForm = () => {
       title: "",
       video: false,
       vote: null,
+      file: null as File | null,
     },
     validationSchema: validationSchema,
     onSubmit: async (values: IInitialValues) => {
@@ -272,6 +274,59 @@ const AddFilmForm = () => {
         {formik.touched.vote && formik.errors.vote && (
           <Typography color="error" variant="body2" gutterBottom>
             {formik.errors.vote}
+          </Typography>
+        )}
+        {/* Upload File */}
+        <FormControl className={styles.formItem}>
+          <Typography className={styles.formLabel} variant="h6">
+            Upload File
+          </Typography>
+          <MuiFileInput
+            className={styles.formInput}
+            minRows={60}
+            value={formik.values.file}
+            onChange={(file) => formik.setFieldValue("file", file)}
+          />
+        </FormControl>
+        {/* Dosya Görüntüleme ve Silme */}
+        {formik.values.file && (
+          <div className="w-[60%] flex items-center justify-between gap-2 my-2">
+            {/* Dosya Adı */}
+            <Typography variant="body1" className="font-medium">
+              {`${formik.values.file.name.slice(
+                0,
+                5
+              )}...${formik.values.file.name.slice(-8)}`}
+            </Typography>
+            <div className="flex gap-2">
+              <button
+                type="button"
+                className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
+                onClick={() => {
+                  const url =
+                    formik.values.file &&
+                    URL.createObjectURL(formik.values.file);
+                  if (url) {
+                    window.open(url, "_blank");
+                  }
+                }}
+              >
+                Show
+              </button>
+              {/* Sil Butonu */}
+              <button
+                type="button"
+                className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600"
+                onClick={() => formik.setFieldValue("file", null)}
+              >
+                Remove
+              </button>
+            </div>
+          </div>
+        )}
+        {formik.touched.file && formik.errors.file && (
+          <Typography color="error" variant="body2" gutterBottom>
+            {formik.errors.file}
           </Typography>
         )}
         {/* Submit Button */}

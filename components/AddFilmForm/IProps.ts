@@ -15,4 +15,5 @@ export interface IInitialValues {
   title: string;
   video: boolean;
   vote: null | number;
+  file: null | File;
 }
