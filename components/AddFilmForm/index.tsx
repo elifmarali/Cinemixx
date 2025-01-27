@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import { validationSchema } from "@/schemas/AddFilmSchema";
 import styles from "@/components/AddFilmForm/styles.module.css";
 import { useAddModalContext } from "@/context/AddFilmModal";
-import { createID } from "@/services/Movies";
+import { createID, saveForm } from "@/services/Movies";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
@@ -59,8 +59,21 @@ const AddFilmForm = () => {
         document.documentElement.style.setProperty("--addMovie", "#00c897");
         const newId = await createID();
         values.id = newId;
-        console.log("Submitted Data:", values);
-
+        const saveObj: any = {
+          id: newId,
+          adult: values.adult,
+          genre_ids: values.genres_ids,
+          original_language: values.original_language,
+          original_title: values.original_title,
+          overview: values.overview,
+          popularity: values.popularity,
+          release_date: values.release_date,
+          title: values.title,
+          video: values.video,
+          vote: values.vote,
+          file: values.file,
+        }
+        await saveForm(saveObj);
         setTimeout(() => {
           closeModal();
         }, 3000);
@@ -71,8 +84,8 @@ const AddFilmForm = () => {
   });
 
   useEffect(() => {
-    console.log("error : ", formik.errors);
-  }, [formik.errors]);
+    console.log("values : ", formik.values);
+  }, [formik.values]);
 
   return (
     <>
@@ -117,7 +130,7 @@ const AddFilmForm = () => {
                 size="small"
               >
                 {genresList.map((genres) => (
-                  <MenuItem key={genres?.id} value={genres?.id}>
+                  <MenuItem key={genres?.id} value={Number(genres?.id)}>
                     {genres?.name}
                   </MenuItem>
                 ))}
@@ -289,8 +302,8 @@ const AddFilmForm = () => {
               <Rating
                 name="text-feedback"
                 value={formik.values.vote}
-                readOnly
                 precision={0.5}
+                onChange={(event, newValue) => formik.setFieldValue("vote", newValue)}
                 emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
               />
               {formik.touched.vote && formik.errors.vote && (

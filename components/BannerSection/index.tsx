@@ -57,7 +57,7 @@ function BannerSection({ contentType, random, param }: any) {
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={`https://image.tmdb.org/t/p/original${firstPopularFilm?.poster_path}`}
+          src={firstPopularFilm?.file ? firstPopularFilm?.file : `https://image.tmdb.org/t/p/original${firstPopularFilm?.poster_path}`}
           alt={firstPopularFilm?.title || ""}
           fill
         />

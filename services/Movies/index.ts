@@ -1,3 +1,4 @@
+import { IInitialValues } from "@/components/AddFilmForm/IProps";
 import axios from "axios";
 
 const MOVIES_API_URL = "http://localhost:3001/movies";
@@ -42,7 +43,9 @@ export const getMoviesList = async ({
     const genreNumber = parseInt(genres, 10);
     if (!isNaN(genreNumber)) {
       return dataAll.filter((movie: any) =>
-        movie.genre_ids.some((genre: any) => genre.toString() === genres)
+        movie.genre_ids?.some(
+          (genre: any) => genre.toString() === genres || genre === genres
+        )
       );
     } else if (genres === "movies") {
       return dataAll;
@@ -69,5 +72,30 @@ export const createID = async () => {
   const dataAll = await fetchData(MOVIES_API_URL);
   const sortedList = dataAll.sort((a: any, b: any) => b.id - a.id);
   const newId = Number(sortedList[0].id) + 1;
-  return newId;
+  return String(newId);
+};
+
+// File kaydetmek için önce base64 formatına çevirilmelidir.
+// Base64 formatı dosyayı metin olarak temsin eder ve JSON içerisinde saklyabilir
+const convertFileToBase64 = (file: File): Promise<string> => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+export const saveForm = async (values: any) => {
+  try {
+    const base64File = await convertFileToBase64(values.file);
+    const payload = {
+      ...values,
+      file: base64File, // Base64 formatında dosya
+    };
+    const response = await axios.post(MOVIES_API_URL, payload);
+    console.log("Veri kaydedildi:", response.data);
+  } catch (error) {
+    console.error("Hata oluştu:", error);
+  }
 };

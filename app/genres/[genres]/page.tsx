@@ -39,6 +39,10 @@ function GenresItem({ params }: any) {
   }, [genresList, genresParams]);
 
   const getList = async (id: any) => {
+    console.log("çalıştı");
+    console.log("id : ",id);
+    
+    
     const data = await getMoviesList({ genres: id });
     setFilmList(data);
   };

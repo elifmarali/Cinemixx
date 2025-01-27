@@ -13,4 +13,5 @@ export interface IBanner {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  file: null | string;
 }
