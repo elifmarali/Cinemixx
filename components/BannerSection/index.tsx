@@ -27,8 +27,7 @@ function BannerSection({ contentType, random, param }: any) {
       } else {
         const res = await getMoviesList({ type: "Popular Films" });
         const findMovie = res.find(
-          (item: IBanner) => item.id === Number(param)
-        );
+          (item: IBanner) => (item.id === param || item.id === Number(param)));
         setFirstPopularFilm(findMovie);
       }
     }

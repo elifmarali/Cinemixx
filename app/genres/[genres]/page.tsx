@@ -27,11 +27,7 @@ function GenresItem({ params }: any) {
     if (genresList.length > 0) {
       if (genresParams.genres) {
         const formattedGenres = genresParams.genres.trim();
-        if (
-          genresList?.some(
-            (genresItem) => genresItem.id === Number(formattedGenres)
-          )
-        ) {
+        if (genresList?.some((genresItem) => (genresItem.id === Number(formattedGenres) || genresItem.id === formattedGenres))) {
           getList(formattedGenres);
         } else {
           notFound();
