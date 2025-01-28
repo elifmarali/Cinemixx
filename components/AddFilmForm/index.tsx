@@ -14,7 +14,7 @@ import { Checkbox, TextField, Typography } from "@mui/material";
 import { IInitialValues, ILanguage } from "./IProps";
 import { DatePicker } from "@mui/x-date-pickers";
 import { MuiFileInput } from "mui-file-input";
-import { Dayjs } from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
@@ -56,7 +56,7 @@ const AddFilmForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values: IInitialValues) => {
       try {
-        document.documentElement.style.setProperty("--addMovie", "#00c897");
+        document.documentElement.style.setProperty("--addMovie", "#8f9094");
         const newId = await createID();
         values.id = newId;
         const saveObj: any = {
@@ -116,7 +116,7 @@ const AddFilmForm = () => {
             <Typography className={styles.formLabel} >
               Genres
             </Typography>
-            <div className="flex flex-col w-full items-end">
+            <div className="flex flex-col w-full items-end max-w-[73.5%]">
               <Select
                 className={styles.formInput}
                 multiple
@@ -204,6 +204,8 @@ const AddFilmForm = () => {
                 name="overview"
                 value={formik.values.overview}
                 onChange={formik.handleChange}
+                multiline
+                maxRows={5}
               />
               {formik.touched.overview && formik.errors.overview && (
                 <Typography color="error" gutterBottom className={styles.errorMessage}>
@@ -242,11 +244,17 @@ const AddFilmForm = () => {
               <DatePicker
                 className={styles.formInput}
                 name="release_date"
-                value={formik.values.release_date}
-                onChange={formik.handleChange}
+                value={formik.values.release_date ? dayjs(formik.values.release_date) : null}
+                onChange={(date: any) => {
+                  if (date) {
+                    const formattedDate = date.format("YYYY-MM-DD");
+                    formik.setFieldValue("release_date", formattedDate);
+                  }
+                }}
                 format="DD/MM/YYYY"
                 slotProps={{ textField: { size: "small" } }}
               />
+
               {formik.touched.release_date && formik.errors.release_date && (
                 <Typography color="error" gutterBottom className={styles.errorMessage}>
                   {formik.errors.release_date}
@@ -304,7 +312,8 @@ const AddFilmForm = () => {
                 value={formik.values.vote}
                 precision={0.5}
                 onChange={(event, newValue) => formik.setFieldValue("vote", newValue)}
-                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                icon={<StarIcon fontSize="large" />}
+                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="large" />}
               />
               {formik.touched.vote && formik.errors.vote && (
                 <Typography color="error" gutterBottom className={styles.errorMessage}>
@@ -314,9 +323,9 @@ const AddFilmForm = () => {
             </div>
           </FormControl>
         </div>
-        <div className="flex w-full gap-5">
+        <div className="flex w-full gap-10">
           {/* Upload File */}
-          <FormControl className={styles.formItem} sx={{ maxWidth: "47%" }}>
+          <FormControl className={styles.formItem} sx={{ maxWidth: "48.5%" }}>
             <Typography className={styles.formLabel} >
               Upload File
             </Typography>
@@ -375,7 +384,7 @@ const AddFilmForm = () => {
         <button type="submit" className={styles.addButton}>
           Submit
         </button>
-      </form>
+      </form >
     </>
   );
 };

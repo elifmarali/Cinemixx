@@ -17,13 +17,15 @@
 }
 
 .formLabel {
-  width: 60%;
+  width: 34%;
   font-size: 16px !important;
-  color: #3a3c45;
+  color: var(--textColor);
+  font-weight: 600 !important;
 }
 
 .formInput {
-  width: 100%;
+  max-width: 20vw !important;
+  width: 94%;
   border-radius: 6px;
   color: rgb(44, 44, 44);
 }
@@ -37,20 +39,21 @@
 }
 
 .addButton {
-  background-color: #039e75;
-  width: 15vw;
+  background-color: #089914;
+  width: 12vw;
   height: 6vh;
   border-radius: 10px;
   font-size: 18px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 500;
+  color: white;
 }
 
 .addButton:after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(45deg, #00c897 50%, transparent 50%);
+  background:var(--addMovie);
   z-index: -1;
   overflow: hidden;
   color: black;
@@ -67,10 +70,9 @@
 .addButton:hover:after {
   background-position: 0;
   font-size: 1.1em;
-  color: white;
 }
 
 .errorMessage {
   margin-bottom: 0px !important;
-  font-size: 12px !important;
+  font-size: 14px !important;
 }

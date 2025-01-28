@@ -12,6 +12,7 @@ const customStyles = {
     zIndex: 1000,
   },
   content: {
+    overflow: "hidden auto",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -20,13 +21,15 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     zIndex: 1010,
     minWidth: "60vw",
+    maxWidth: "60vw",
     border: "none",
     borderRadius: "10px",
     background: `var(--addMovie)`,
-    display:"flex",
-    flexDirection:"column" as const,
-    alignItems:"flex-end",
-    justifyContent:"space-between",
+    color: `var(--textColor)`,
+    display: "flex",
+    flexDirection: "column" as const,
+    alignItems: "flex-end",
+    justifyContent: "space-between",
   },
 };
 
@@ -34,18 +37,16 @@ function AddFilmModal() {
   const { addModal, closeModal } = useAddModalContext();
 
   useEffect(() => {
-    if (!addModal) {
-      document.documentElement.style.setProperty(
-        "--addMovie",
-        "linear-gradient(0.25turn, #7d7d7d, #a8a8a8, #bfbfbf)"
-      );
+    if (addModal) {
+      document.documentElement.style.setProperty("--addMovie", "#afb2b6");
+      document.documentElement.style.setProperty("--textColor", "#fff");
     }
   }, [addModal]);
 
   return (
     <Modal isOpen={addModal} onRequestClose={closeModal} style={customStyles}>
       <div className="flex justify-between item-center w-[60%] mb-5">
-        <div className="flex justify-center items-center gap-2 text-3xl font-black text-[#3a3c45]">
+        <div className="flex justify-center items-center gap-2 text-3xl font-black text-[var(--textColor)]">
           <CiSquarePlus size={35} />
           <h1>Add Movie</h1>
         </div>
