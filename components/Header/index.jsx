@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import AddFilmModal from "../AddFilmModal";
+import logo from "@/assets/logo.png"
+import Image from "next/image";
 
 function Header() {
   const pathname = usePathname();
@@ -28,8 +30,7 @@ function Header() {
             href="/"
             className="flex justify-center items-center text-lg gap-3"
           >
-            <FaPlayCircle className="w-[24px] h-[24px]" />
-            <div className="text-xl font-semibold">Netfilms</div>
+            <Image src={logo} width={200} height={120}/>
           </Link>
           <nav className="flex gap-4">
             <Link

@@ -89,7 +89,7 @@ const AddFilmForm = () => {
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit} className={styles.form}>
+      <form className={styles.form}>
         <div className="flex w-full items-start gap-10">
           {/* Adult Checkbox */}
           <FormControl className={styles.formItem}>
@@ -381,7 +381,7 @@ const AddFilmForm = () => {
           </FormControl>
         </div>
         {/* Submit Button */}
-        <button type="submit" className={styles.addButton}>
+        <button type="submit" className={styles.addButton} onSubmit={()=>formik.handleSubmit()}>
           Submit
         </button>
       </form >
