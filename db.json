@@ -81,11 +81,7 @@
     {
       "adult": false,
       "backdrop_path": "/xDMIl84Qo5Tsu62c9DGWhmPI67A.jpg",
-      "genre_ids": [
-        28,
-        12,
-        878
-      ],
+      "genre_ids": [28, 12, 878],
       "id": "505642",
       "original_language": "en",
       "original_title": "Black Panther: Wakanda Forever",
@@ -101,13 +97,7 @@
     {
       "adult": false,
       "backdrop_path": "/tUBN1paMQ1tmVA5Sjy1ZjPWVsiF.jpg",
-      "genre_ids": [
-        12,
-        16,
-        35,
-        10751,
-        14
-      ],
+      "genre_ids": [12, 16, 35, 10751, 14],
       "id": "676701",
       "original_language": "es",
       "original_title": "Tadeo Jones 3: La Tabla Esmeralda",
@@ -123,11 +113,7 @@
     {
       "adult": false,
       "backdrop_path": "/kpUre8wWSXn3D5RhrMttBZa6w1v.jpg",
-      "genre_ids": [
-        35,
-        10751,
-        14
-      ],
+      "genre_ids": [35, 10751, 14],
       "id": "338958",
       "original_language": "en",
       "original_title": "Disenchanted",
@@ -143,11 +129,7 @@
     {
       "adult": false,
       "backdrop_path": "/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
-      "genre_ids": [
-        28,
-        14,
-        878
-      ],
+      "genre_ids": [28, 14, 878],
       "id": "436270",
       "original_language": "en",
       "original_title": "Black Adam",
@@ -163,12 +145,7 @@
     {
       "adult": false,
       "backdrop_path": "/kmzppWh7ljL6K9fXW72bPN3gKwu.jpg",
-      "genre_ids": [
-        14,
-        28,
-        35,
-        80
-      ],
+      "genre_ids": [14, 28, 35, 80],
       "id": "1013860",
       "original_language": "en",
       "original_title": "R.I.P.D. 2: Rise of the Damned",
@@ -184,11 +161,7 @@
     {
       "adult": false,
       "backdrop_path": "/olPXihyFeeNvnaD6IOBltgIV1FU.jpg",
-      "genre_ids": [
-        27,
-        9648,
-        53
-      ],
+      "genre_ids": [27, 9648, 53],
       "id": "882598",
       "original_language": "en",
       "original_title": "Smile",
@@ -204,11 +177,7 @@
     {
       "adult": false,
       "backdrop_path": "/yNib9QAiyaopUJbaayKQ2xK7mYf.jpg",
-      "genre_ids": [
-        18,
-        28,
-        10752
-      ],
+      "genre_ids": [18, 28, 10752],
       "id": "966220",
       "original_language": "uk",
       "original_title": "Снайпер. Білий ворон",
@@ -224,11 +193,7 @@
     {
       "adult": false,
       "backdrop_path": "/au4HUSWDRadIcl9CqySlw1kJMfo.jpg",
-      "genre_ids": [
-        80,
-        28,
-        53
-      ],
+      "genre_ids": [80, 28, 53],
       "id": "829799",
       "original_language": "en",
       "original_title": "Paradise City",
@@ -244,11 +209,7 @@
     {
       "adult": false,
       "backdrop_path": null,
-      "genre_ids": [
-        28,
-        27,
-        53
-      ],
+      "genre_ids": [28, 27, 53],
       "id": "988233",
       "original_language": "en",
       "original_title": "Hex",
@@ -264,11 +225,7 @@
     {
       "adult": false,
       "backdrop_path": "/aQOWnw3HydsCQZ10O0wvxFOaWc3.jpg",
-      "genre_ids": [
-        36,
-        28,
-        18
-      ],
+      "genre_ids": [36, 28, 18],
       "id": "551271",
       "original_language": "en",
       "original_title": "Medieval",
@@ -284,12 +241,7 @@
     {
       "adult": false,
       "backdrop_path": "/gVecEIEZLZg3pV5CACXAB48I6au.jpg",
-      "genre_ids": [
-        80,
-        18,
-        9648,
-        53
-      ],
+      "genre_ids": [80, 18, 9648, 53],
       "id": "862965",
       "original_language": "en",
       "original_title": "Emily the Criminal",
@@ -305,11 +257,7 @@
     {
       "adult": false,
       "backdrop_path": "/707thQazLJiYLBhCrZlRoV05NNL.jpg",
-      "genre_ids": [
-        28,
-        18,
-        53
-      ],
+      "genre_ids": [28, 18, 53],
       "id": "948276",
       "original_language": "fr",
       "original_title": "Balle perdue 2",
@@ -325,11 +273,7 @@
     {
       "adult": false,
       "backdrop_path": "/u9Io1hVnxb2b3T0z99aOK8sq0SN.jpg",
-      "genre_ids": [
-        9648,
-        12,
-        80
-      ],
+      "genre_ids": [9648, 12, 80],
       "id": "829280",
       "original_language": "en",
       "original_title": "Enola Holmes 2",
@@ -345,10 +289,7 @@
     {
       "adult": false,
       "backdrop_path": "/y5Z0WesTjvn59jP6yo459eUsbli.jpg",
-      "genre_ids": [
-        27,
-        53
-      ],
+      "genre_ids": [27, 53],
       "id": "663712",
       "original_language": "en",
       "original_title": "Terrifier 2",
@@ -364,9 +305,7 @@
     {
       "adult": false,
       "backdrop_path": "/f9g3R9gq0bASip9RnK2H56dbb5j.jpg",
-      "genre_ids": [
-        53
-      ],
+      "genre_ids": [53],
       "id": "979924",
       "original_language": "en",
       "original_title": "On the Line",
@@ -382,11 +321,7 @@
     {
       "adult": false,
       "backdrop_path": "/eyiSLRh44SKKWIJ6bxWq8z1sscB.jpg",
-      "genre_ids": [
-        53,
-        27,
-        80
-      ],
+      "genre_ids": [53, 27, 80],
       "id": "899294",
       "original_language": "en",
       "original_title": "Frank and Penelope",
@@ -402,10 +337,7 @@
     {
       "adult": false,
       "backdrop_path": "/sCOHkah9RbFeZfFnfBrcykKCMNa.jpg",
-      "genre_ids": [
-        27,
-        878
-      ],
+      "genre_ids": [27, 878],
       "id": "846778",
       "original_language": "en",
       "original_title": "Margaux",
@@ -421,9 +353,7 @@
     {
       "adult": false,
       "backdrop_path": "/1DBDwevWS8OhiT3wqqlW7KGPd6m.jpg",
-      "genre_ids": [
-        53
-      ],
+      "genre_ids": [53],
       "id": "985939",
       "original_language": "en",
       "original_title": "Fall",
@@ -439,10 +369,7 @@
     {
       "adult": false,
       "backdrop_path": "/8Tr79lfoCkOYRg8SYwWit4OoQLi.jpg",
-      "genre_ids": [
-        878,
-        28
-      ],
+      "genre_ids": [878, 28],
       "id": "872177",
       "original_language": "en",
       "original_title": "Corrective Measures",
@@ -458,10 +385,7 @@
     {
       "adult": false,
       "backdrop_path": "/fMymfWwgTfXh9RkBCFuaZrdn8Of.jpg",
-      "genre_ids": [
-        28,
-        27
-      ],
+      "genre_ids": [28, 27],
       "id": "760204",
       "original_language": "vi",
       "original_title": "The Lair",
@@ -478,11 +402,7 @@
       "id": "1013863",
       "adult": false,
       "backdrop_path": "/fMymfWwgTfXh9RkBCFuaZrdn8Of.jpg",
-      "genre_ids": [
-        10751,
-        28,
-        12
-      ],
+      "genre_ids": [10751, 28, 12],
       "original_language": "vi",
       "original_title": "The Lair",
       "overview": "Royal Air Force pilot Lt. Kate Sinclair is on her final flight mission when her jet is shot down over one of the most dangerous rebel strongholds in Afghanistan. She finds refuge in an abandoned underground bunker where deadly man-made creatures known as Ravagers — half-human, half-alien, and hungry for human flesh — are awakened.",
