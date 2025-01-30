@@ -11,6 +11,7 @@ export interface IBanner {
   release_date: string;
   title: string;
   video: boolean;
+  vote: number;
   vote_average: number;
   vote_count: number;
   file: null | string;

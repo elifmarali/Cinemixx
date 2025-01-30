@@ -15,8 +15,8 @@ import { IInitialValues, ILanguage } from "./IProps";
 import { DatePicker } from "@mui/x-date-pickers";
 import { MuiFileInput } from "mui-file-input";
 import dayjs, { Dayjs } from "dayjs";
-import Rating from '@mui/material/Rating';
-import StarIcon from '@mui/icons-material/Star';
+import Rating from "@mui/material/Rating";
+import StarIcon from "@mui/icons-material/Star";
 
 const AddFilmForm = () => {
   const [genresList, setGenresList] = useState<IGenres[]>([]);
@@ -56,7 +56,6 @@ const AddFilmForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values: IInitialValues) => {
       try {
-        document.documentElement.style.setProperty("--addMovie", "#8f9094");
         const newId = await createID();
         values.id = newId;
         const saveObj: any = {
@@ -72,7 +71,7 @@ const AddFilmForm = () => {
           video: values.video,
           vote: values.vote,
           file: values.file,
-        }
+        };
         await saveForm(saveObj);
         setTimeout(() => {
           closeModal();
@@ -89,13 +88,11 @@ const AddFilmForm = () => {
 
   return (
     <>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         <div className="flex w-full items-start gap-10">
           {/* Adult Checkbox */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel}>
-              Adult
-            </Typography>
+            <Typography className={styles.formLabel}>Adult</Typography>
             <div className="flex flex-col w-full items-end">
               <Checkbox
                 className={styles.formCheckbox}
@@ -105,7 +102,11 @@ const AddFilmForm = () => {
                 }}
               />
               {formik.touched.adult && formik.errors.adult && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.adult}
                 </Typography>
               )}
@@ -113,9 +114,7 @@ const AddFilmForm = () => {
           </FormControl>
           {/* Genres List - Çoklu Seçim */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Genres
-            </Typography>
+            <Typography className={styles.formLabel}>Genres</Typography>
             <div className="flex flex-col w-full items-end max-w-[73.5%]">
               <Select
                 className={styles.formInput}
@@ -136,7 +135,11 @@ const AddFilmForm = () => {
                 ))}
               </Select>
               {formik.touched.genres_ids && formik.errors.genres_ids && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.genres_ids}
                 </Typography>
               )}
@@ -146,7 +149,7 @@ const AddFilmForm = () => {
         <div className="flex w-full gap-10">
           {/* Original Language */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
+            <Typography className={styles.formLabel}>
               Original Language
             </Typography>
             <div className="flex flex-col w-full items-end">
@@ -158,14 +161,21 @@ const AddFilmForm = () => {
                 size="small"
               >
                 {originalLanguage.map((language: ILanguage) => (
-                  <MenuItem key={language?.shortening} value={language?.shortening}>
+                  <MenuItem
+                    key={language?.shortening}
+                    value={language?.shortening}
+                  >
                     {language?.name}
                   </MenuItem>
                 ))}
               </Select>
               {formik.touched.original_language &&
                 formik.errors.original_language && (
-                  <Typography color="error" gutterBottom className={styles.errorMessage}>
+                  <Typography
+                    color="error"
+                    gutterBottom
+                    className={styles.errorMessage}
+                  >
                     {formik.errors.original_language}
                   </Typography>
                 )}
@@ -173,9 +183,7 @@ const AddFilmForm = () => {
           </FormControl>
           {/* Original Title */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Original Title
-            </Typography>
+            <Typography className={styles.formLabel}>Original Title</Typography>
             <div className="flex flex-col w-full items-end">
               <TextField
                 size="small"
@@ -183,20 +191,24 @@ const AddFilmForm = () => {
                 name="original_title"
                 value={formik.values.original_title}
                 onChange={formik.handleChange}
-              />{formik.touched.original_title && formik.errors.original_title && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
-                  {formik.errors.original_title}
-                </Typography>
-              )}
+              />
+              {formik.touched.original_title &&
+                formik.errors.original_title && (
+                  <Typography
+                    color="error"
+                    gutterBottom
+                    className={styles.errorMessage}
+                  >
+                    {formik.errors.original_title}
+                  </Typography>
+                )}
             </div>
           </FormControl>
         </div>
         <div className="flex w-full gap-10">
           {/* Overview */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Overview
-            </Typography>
+            <Typography className={styles.formLabel}>Overview</Typography>
             <div className="flex flex-col w-full items-end">
               <TextField
                 size="small"
@@ -208,7 +220,11 @@ const AddFilmForm = () => {
                 maxRows={5}
               />
               {formik.touched.overview && formik.errors.overview && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.overview}
                 </Typography>
               )}
@@ -216,9 +232,7 @@ const AddFilmForm = () => {
           </FormControl>
           {/* Popularity */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Popularity
-            </Typography>
+            <Typography className={styles.formLabel}>Popularity</Typography>
             <div className="flex flex-col w-full items-end">
               <TextField
                 size="small"
@@ -226,8 +240,13 @@ const AddFilmForm = () => {
                 name="popularity"
                 value={formik.values.popularity}
                 onChange={formik.handleChange}
-              />{formik.touched.popularity && formik.errors.popularity && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+              />
+              {formik.touched.popularity && formik.errors.popularity && (
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.popularity}
                 </Typography>
               )}
@@ -237,14 +256,16 @@ const AddFilmForm = () => {
         <div className="flex w-full gap-10">
           {/* Release Date */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Release Date
-            </Typography>
+            <Typography className={styles.formLabel}>Release Date</Typography>
             <div className="flex flex-col w-full items-end">
               <DatePicker
                 className={styles.formInput}
                 name="release_date"
-                value={formik.values.release_date ? dayjs(formik.values.release_date) : null}
+                value={
+                  formik.values.release_date
+                    ? dayjs(formik.values.release_date)
+                    : null
+                }
                 onChange={(date: any) => {
                   if (date) {
                     const formattedDate = date.format("YYYY-MM-DD");
@@ -256,7 +277,11 @@ const AddFilmForm = () => {
               />
 
               {formik.touched.release_date && formik.errors.release_date && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.release_date}
                 </Typography>
               )}
@@ -264,9 +289,7 @@ const AddFilmForm = () => {
           </FormControl>
           {/* Title */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Title
-            </Typography>
+            <Typography className={styles.formLabel}>Title</Typography>
             <div className="flex flex-col w-full items-end">
               <TextField
                 size="small"
@@ -276,7 +299,11 @@ const AddFilmForm = () => {
                 onChange={formik.handleChange}
               />
               {formik.touched.title && formik.errors.title && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.title}
                 </Typography>
               )}
@@ -294,8 +321,13 @@ const AddFilmForm = () => {
                   formik.setFieldValue("video", e.target.checked);
                 }}
                 className={styles.formCheckbox}
-              />{formik.touched.video && formik.errors.video && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+              />
+              {formik.touched.video && formik.errors.video && (
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.video}
                 </Typography>
               )}
@@ -303,20 +335,26 @@ const AddFilmForm = () => {
           </FormControl>
           {/* Vote */}
           <FormControl className={styles.formItem}>
-            <Typography className={styles.formLabel} >
-              Vote
-            </Typography>
+            <Typography className={styles.formLabel}>Vote</Typography>
             <div className="flex flex-col w-full items-end">
               <Rating
                 name="text-feedback"
                 value={formik.values.vote}
                 precision={0.5}
-                onChange={(event, newValue) => formik.setFieldValue("vote", newValue)}
+                onChange={(event, newValue) =>
+                  formik.setFieldValue("vote", newValue)
+                }
                 icon={<StarIcon fontSize="large" />}
-                emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="large" />}
+                emptyIcon={
+                  <StarIcon style={{ opacity: 0.55 }} fontSize="large" />
+                }
               />
               {formik.touched.vote && formik.errors.vote && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.vote}
                 </Typography>
               )}
@@ -326,9 +364,7 @@ const AddFilmForm = () => {
         <div className="flex w-full gap-10">
           {/* Upload File */}
           <FormControl className={styles.formItem} sx={{ maxWidth: "48.5%" }}>
-            <Typography className={styles.formLabel} >
-              Upload File
-            </Typography>
+            <Typography className={styles.formLabel}>Upload File</Typography>
             <div className="flex flex-col w-full items-end">
               <MuiFileInput
                 size="small"
@@ -338,18 +374,18 @@ const AddFilmForm = () => {
               />
               {/* Dosya Görüntüleme ve Silme */}
               {formik.values.file && (
-                <div className="w-[60%] flex items-center justify-between gap-2 my-2">
+                <div className="w-[92%] flex items-center justify-between gap-2 my-2">
                   {/* Dosya Adı */}
-                  <Typography variant="body1" className="font-medium">
+                  <p className="font-medium text-[#2f2f2f]">
                     {`${formik.values.file.name.slice(
                       0,
                       5
-                    )}...${formik.values.file.name.slice(-8)}`}
-                  </Typography>
+                    )}..${formik.values.file.name.slice(-3)}`}
+                  </p>
                   <div className="flex gap-2">
                     <button
                       type="button"
-                      className="bg-blue-500 text-white py-1 px-3 rounded-lg hover:bg-blue-600"
+                      className="bg-[#F0A46F] text-white py-1 px-3 rounded-lg hover:bg-orange-500"
                       onClick={() => {
                         const url =
                           formik.values.file &&
@@ -364,7 +400,7 @@ const AddFilmForm = () => {
                     {/* Sil Butonu */}
                     <button
                       type="button"
-                      className="bg-red-500 text-white py-1 px-3 rounded-lg hover:bg-red-600"
+                      className="bg-[#E34139] text-white py-1 px-3 rounded-lg hover:bg-red-600"
                       onClick={() => formik.setFieldValue("file", null)}
                     >
                       Remove
@@ -373,7 +409,11 @@ const AddFilmForm = () => {
                 </div>
               )}
               {formik.touched.file && formik.errors.file && (
-                <Typography color="error" gutterBottom className={styles.errorMessage}>
+                <Typography
+                  color="error"
+                  gutterBottom
+                  className={styles.errorMessage}
+                >
                   {formik.errors.file}
                 </Typography>
               )}
@@ -381,10 +421,10 @@ const AddFilmForm = () => {
           </FormControl>
         </div>
         {/* Submit Button */}
-        <button type="submit" className={styles.addButton} onSubmit={()=>formik.handleSubmit()}>
+        <button type="submit" className={styles.addButton}>
           Submit
         </button>
-      </form >
+      </form>
     </>
   );
 };

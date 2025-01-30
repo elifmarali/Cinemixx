@@ -19,7 +19,7 @@
 .formLabel {
   width: 34%;
   font-size: 16px !important;
-  color: var(--textColor);
+  color: rgb(47, 47, 47);
   font-weight: 600 !important;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .addButton {
-  background-color: #089914;
+  background-color: #F0A46F;
   width: 12vw;
   height: 6vh;
   border-radius: 10px;
@@ -53,7 +53,13 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:var(--addMovie);
+  background: linear-gradient(45deg,
+      #E34139 0%,
+      #F0A46F 20%,
+      #EAD8C4 40%,
+      #EEEEEE 60%,
+      #FFF3E0 80%,
+      transparent 100%);
   z-index: -1;
   overflow: hidden;
   color: black;
@@ -66,13 +72,12 @@
   transition: 1s, font-size 0.2s;
 }
 
+.addButton:hover {
+  background-color: #E34139;
+}
+
 .addButton:hover,
 .addButton:hover:after {
   background-position: 0;
   font-size: 1.1em;
-}
-
-.errorMessage {
-  margin-bottom: 0px !important;
-  font-size: 14px !important;
 }
