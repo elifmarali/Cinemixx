@@ -8,7 +8,7 @@ export interface ILanguage {
 export interface IInitialValues {
   id: null | string;
   adult: boolean;
-  genres_ids: number[];
+  genre_ids: number[];
   original_language: string;
   original_title: string;
   overview: string;

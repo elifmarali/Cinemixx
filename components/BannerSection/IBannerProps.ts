@@ -16,3 +16,10 @@ export interface IBanner {
   vote_count: number;
   file: null | string;
 }
+
+
+export interface IBannerParams{
+  contentType:boolean;
+  random:boolean;
+  param?:string | number;
+}

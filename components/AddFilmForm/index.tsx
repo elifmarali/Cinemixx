@@ -17,11 +17,6 @@ import dayjs, { Dayjs } from "dayjs";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
 import Dropzone from 'react-dropzone';
-import styled from 'styled-components';
-
-const StyledDiv = styled.div`
-    background: "#eeeeee"
-`
 
 const AddFilmForm = () => {
   const [genresList, setGenresList] = useState<IGenres[]>([]);
@@ -29,15 +24,19 @@ const AddFilmForm = () => {
     { name: "English", shortening: "en" },
     { name: "Türkçe", shortening: "tr" },
   ];
-  const { addModal, closeModal } = useAddModalContext();
+  const { closeModal } = useAddModalContext();
 
   useEffect(() => {
     async function fetchGenresList() {
       try {
         const res: IGenres[] = await getGenresList();
         setGenresList(res);
-      } catch (err: any) {
-        console.error("ERR GetGenresList[AddFilmFormComponent]: ", err.message);
+      } catch (err: unknown) {
+        if(err instanceof Error){
+          console.error("ERR GetGenresList[AddFilmFormComponent]: ", err.message);
+        }else{
+          console.error("Bilinmeyen bir hata oluştu:", err);
+        }
       }
     }
     fetchGenresList();
@@ -47,7 +46,7 @@ const AddFilmForm = () => {
     initialValues: {
       id: null,
       adult: false,
-      genres_ids: [],
+      genre_ids: [],
       original_language: "",
       original_title: "",
       overview: "",
@@ -63,10 +62,10 @@ const AddFilmForm = () => {
       try {
         const newId = await createID();
         values.id = newId;
-        const saveObj: any = {
+        const saveObj: IInitialValues = {
           id: newId,
           adult: values.adult,
-          genre_ids: values.genres_ids,
+          genre_ids: values.genre_ids,
           original_language: values.original_language,
           original_title: values.original_title,
           overview: values.overview,
@@ -81,8 +80,12 @@ const AddFilmForm = () => {
         setTimeout(() => {
           closeModal();
         }, 3000);
-      } catch (err: any) {
-        console.error("AddFilmForm Error : ", err.message);
+      } catch (err: unknown) {
+        if(err instanceof Error){
+          console.error("AddFilmForm Error : ", err.message);
+        }else{
+          console.error("Bilinmeyen bir hata oluştu:", err);
+        }
       }
     },
   });
@@ -124,12 +127,12 @@ const AddFilmForm = () => {
               <Select
                 className={styles.formInput}
                 multiple
-                value={formik.values.genres_ids}
+                value={formik.values.genre_ids}
                 onChange={(e) => {
                   const selectedValues = Array.isArray(e.target.value)
                     ? e.target.value
                     : e.target.value.split(",");
-                  formik.setFieldValue("genres_ids", selectedValues);
+                  formik.setFieldValue("genre_ids", selectedValues);
                 }}
                 size="small"
               >
@@ -139,13 +142,13 @@ const AddFilmForm = () => {
                   </MenuItem>
                 ))}
               </Select>
-              {formik.touched.genres_ids && formik.errors.genres_ids && (
+              {formik.touched.genre_ids && formik.errors.genre_ids && (
                 <Typography
                   color="error"
                   gutterBottom
                   className={styles.errorMessage}
                 >
-                  {formik.errors.genres_ids}
+                  {formik.errors.genre_ids}
                 </Typography>
               )}
             </div>
@@ -271,7 +274,7 @@ const AddFilmForm = () => {
                     ? dayjs(formik.values.release_date)
                     : null
                 }
-                onChange={(date: any) => {
+                onChange={(date: Dayjs | null) => {
                   if (date) {
                     const formattedDate = date.format("YYYY-MM-DD");
                     formik.setFieldValue("release_date", formattedDate);

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import Modal from "react-modal";
 import { IoClose } from "react-icons/io5";
 import AddFilmForm from "../AddFilmForm";

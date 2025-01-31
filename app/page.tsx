@@ -1,7 +1,6 @@
 import HomeContainer from "@/contianer/Home";
 import { Metadata } from "next";
 
-
 export const metadata: Metadata = {
   title: "Cinemixx",
   description:

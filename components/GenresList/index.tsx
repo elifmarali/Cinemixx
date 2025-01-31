@@ -13,8 +13,13 @@ function GenresList() {
       try {
         const res: IGenres[] = await getGenresList();
         setGenresList(res);
-      } catch (err: any) {
-        console.error("ERR GetGenresList[GenresListComponent]: ", err.message);
+      } catch (err: unknown) {
+        if(err instanceof Error){
+          console.error("ERR GetGenresList[GenresListComponent]: ", err.message);
+        }
+        else{
+          console.error("Bilinmeyen bir hata oluştu:", err);
+        }
       }
     }
     fetchGenres();

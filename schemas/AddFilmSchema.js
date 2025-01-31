@@ -2,7 +2,7 @@ import * as yup from "yup";
 
 export const validationSchema = yup.object().shape({
   adult: yup.boolean().required(),
-  genres_ids: yup
+  genre_ids: yup
     .array()
     .of(yup.number().required())
     .min(1, "You must select at least 1 genre"),

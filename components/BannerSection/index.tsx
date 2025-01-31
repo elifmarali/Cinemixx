@@ -3,14 +3,14 @@ import React, { useEffect, useState } from "react";
 import styles from "@/components/BannerSection/styles.module.css";
 import { getMoviesList } from "@/services/Movies";
 import Image from "next/image";
-import { IBanner } from "./IBannerProps";
+import { IBanner, IBannerParams } from "./IBannerProps";
 import "@/styles/globals.css";
 import Button from "../Button";
 import FavButton from "../FavButton";
 import Link from "next/link";
 import Rating from "@mui/material/Rating";
 
-function BannerSection({ contentType, random, param }: any) {
+function BannerSection({ contentType, random, param }: IBannerParams) {
   const [firstPopularFilm, setFirstPopularFilm] = useState<IBanner>();
   const [rating, setRating] = useState<number | null>(null);
 
@@ -38,7 +38,7 @@ function BannerSection({ contentType, random, param }: any) {
       }
     }
     fetchFirstMovies();
-  }, []);
+  }, [contentType,param,random]);
 
   return (
     <div

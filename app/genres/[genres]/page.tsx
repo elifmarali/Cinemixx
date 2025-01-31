@@ -1,55 +1,62 @@
 "use client";
-import React, { useEffect, useState, use } from "react";
+import React, { useEffect, useState } from "react";
 import { IGenres } from "./IGenresListProps";
 import { getGenresList } from "@/services/Genres";
 import { notFound } from "next/navigation";
 import { getMoviesList } from "@/services/Movies";
 import FilmList from "@/components/FilmsList";
 
-function GenresItem({ params }: any) {
+function GenresItem({ params }: { params: Promise<{ genres: string }> }) {
   const [genresList, setGenresList] = useState<IGenres[]>([]);
-  const genresParams: any = use(params);
   const [filmList, setFilmList] = useState([]);
+  const [resolvedParams, setResolvedParams] = useState<{ genres: string } | null>(null);
 
   useEffect(() => {
-    async function fetchGenres() {
+    // Params'ı çözmek için async bir fonksiyon kullanıyoruz
+    const resolveParams = async () => {
+      const resolved = await params; // params'ı çöz
+      setResolvedParams(resolved); // Çözülen parametreyi state'e kaydet
+    };
+    
+    resolveParams();
+  }, [params]); // params değişirse tekrar çalışacak
+
+  useEffect(() => {
+    const fetchGenres = async () => {
       try {
-        const res: any = await getGenresList();
+        const res = await getGenresList();
         setGenresList(res || []);
-      } catch (err: any) {
-        console.error("ERR FetchGenres : ", err.message);
+      } catch (err) {
+        console.error("ERR FetchGenres:", err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu");
       }
-    }
+    };
     fetchGenres();
-  }, []);
+  }, []); // Yalnızca bileşen ilk yüklendiğinde çalışacak
 
   useEffect(() => {
-    if (genresList.length > 0) {
-      if (genresParams.genres) {
-        const formattedGenres = genresParams.genres.trim();
-        if (genresList?.some((genresItem) => (genresItem.id === Number(formattedGenres) || genresItem.id === formattedGenres))) {
-          getList(formattedGenres);
-        } else {
-          notFound();
-        }
+    // Eğer resolvedParams yüklendiyse ve genresList mevcutsa filmleri çek
+    const fetchMovies = async (genreId: string) => {
+      try {
+        const data = await getMoviesList({ genres: genreId });
+        setFilmList(data);
+      } catch (err) {
+        console.error("ERR FetchMovies:", err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu");
+      }
+    };
+
+    if (resolvedParams && genresList.length > 0) {
+      const genreId = resolvedParams.genres.trim() ?? "";
+      if (genreId && genresList.some((genre) => genre.id === genreId)) {
+        fetchMovies(genreId);
       } else {
-        console.error("Invalid genresParams:", genresParams);
+        notFound();
       }
     }
-  }, [genresList, genresParams]);
-
-  const getList = async (id: any) => {
-    console.log("çalıştı");
-    console.log("id : ",id);
-    
-    
-    const data = await getMoviesList({ genres: id });
-    setFilmList(data);
-  };
+  }, [genresList, resolvedParams]);
 
   return (
     <div>
-      <FilmList list={filmList} type="single"></FilmList>
+      <FilmList list={filmList} type="single" />
     </div>
   );
 }
