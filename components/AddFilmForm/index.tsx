@@ -13,10 +13,15 @@ import { getGenresList } from "@/services/Genres";
 import { Checkbox, TextField, Typography } from "@mui/material";
 import { IInitialValues, ILanguage } from "./IProps";
 import { DatePicker } from "@mui/x-date-pickers";
-import { MuiFileInput } from "mui-file-input";
 import dayjs, { Dayjs } from "dayjs";
 import Rating from "@mui/material/Rating";
 import StarIcon from "@mui/icons-material/Star";
+import Dropzone from 'react-dropzone';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+    background: "#eeeeee"
+`
 
 const AddFilmForm = () => {
   const [genresList, setGenresList] = useState<IGenres[]>([]);
@@ -24,7 +29,7 @@ const AddFilmForm = () => {
     { name: "English", shortening: "en" },
     { name: "Türkçe", shortening: "tr" },
   ];
-  const { closeModal } = useAddModalContext();
+  const { addModal, closeModal } = useAddModalContext();
 
   useEffect(() => {
     async function fetchGenresList() {
@@ -366,12 +371,28 @@ const AddFilmForm = () => {
           <FormControl className={styles.formItem} sx={{ maxWidth: "48.5%" }}>
             <Typography className={styles.formLabel}>Upload File</Typography>
             <div className="flex flex-col w-full items-end">
-              <MuiFileInput
-                size="small"
-                className={styles.formInput}
-                value={formik.values.file}
-                onChange={(file) => formik.setFieldValue("file", file)}
-              />
+              <Dropzone onDrop={(acceptedFiles) => {
+                if (acceptedFiles.length > 0) {
+                  formik.setFieldValue("file", acceptedFiles[0])
+                }
+              }}
+                /*accept={{ "image/*": [".png", ".jpg", ".jpeg"] }}*/
+                maxFiles={1}
+              >
+                {({ getRootProps, getInputProps }) => (
+                                  <div
+                                    {...getRootProps({
+                                      className: styles.dropzone,
+                                    })}
+                                  >
+                                    <input {...getInputProps()} />
+                                    <p>
+                                      Dosyayı buraya sürükleyip bırakın veya dosya
+                                      seçmek için tıklayın.
+                                    </p>
+                                  </div>
+                                )}
+              </Dropzone>
               {/* Dosya Görüntüleme ve Silme */}
               {formik.values.file && (
                 <div className="w-[92%] flex items-center justify-between gap-2 my-2">

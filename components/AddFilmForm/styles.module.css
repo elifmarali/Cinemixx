@@ -81,3 +81,27 @@
   background-position: 0;
   font-size: 1.1em;
 }
+
+.dropzone {
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-width: 2px;
+  border-radius: 2px;
+  border-color: #F0A46F;
+  border-style: dashed;
+  background-color: #FFF3E0;
+  font-weight: 600;
+  color: #3e3e40;
+  outline: none;
+  transition: border 0.24s ease-in-out;
+  height: 100px;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.dropzone:focus {
+  border-color: #E34139;
+}
