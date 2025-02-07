@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const GENRES_API_URL = "http://localhost:3001/genres";
+const GENRES_API_URL = "/api/genres";
 
 export const fetchData = async (url) => {
   try {

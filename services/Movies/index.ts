@@ -1,7 +1,7 @@
 import { IInitialValues } from "@/components/AddFilmForm/IProps";
 import axios from "axios";
 
-const MOVIES_API_URL = "http://localhost:3001/movies";
+const MOVIES_API_URL = "/api/movies";
 
 export const fetchData = async (url: string) => {
   try {
@@ -88,14 +88,23 @@ const convertFileToBase64 = (file: File): Promise<string> => {
 
 export const saveForm = async (values: any) => {
   try {
-    const base64File = await convertFileToBase64(values.file);
+    console.log("📌 Gönderilen form verisi:", values);
+
+    const base64File = values.file
+      ? await convertFileToBase64(values.file)
+      : null;
+    console.log("📂 Base64 Dosya:", base64File?.substring(0, 50) + "...");
+
     const payload = {
       ...values,
-      file: base64File, // Base64 formatında dosya
+      file: base64File, // MongoDB için Base64 dosya
     };
+
+    console.log("📤 API'ye gönderilen veri:", payload);
+
     const response = await axios.post(MOVIES_API_URL, payload);
-    console.log("Veri kaydedildi:", response.data);
+    console.log("✅ Veri başarıyla kaydedildi:", response.data);
   } catch (error) {
-    console.error("Hata oluştu:", error);
+    console.error("❌ Hata oluştu:", error);
   }
 };
