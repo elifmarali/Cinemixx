@@ -38,7 +38,7 @@ function BannerSection({ contentType, random, param }: IBannerParams) {
       }
     }
     fetchFirstMovies();
-  }, [contentType,param,random]);
+  }, [contentType, param, random]);
 
   return (
     <div
@@ -46,7 +46,9 @@ function BannerSection({ contentType, random, param }: IBannerParams) {
       style={{ height: "60vh", width: "100%" }}
     >
       <div className={`${styles.bannerContent}`}>
-        <h2 className="text-[72px] font-black uppercase tracking-wide">
+        <h2
+          className={`${styles.bannerTitle} text-[72px] font-black uppercase tracking-wide`}
+        >
           {firstPopularFilm?.title}
         </h2>
         <div className="flex gap-1 items-center">
