@@ -15,19 +15,18 @@
   width: 50%;
   gap: 10px;
   flex: 1;
-  min-width: 300px !important;
+  min-width: 400px !important;
 }
 
 .formLabel {
-  width: 20%;
+  width: 40%;
   font-size: 16px !important;
   color: rgb(47, 47, 47);
   font-weight: 600 !important;
 }
 
 .formInput {
-  max-width: 20vw !important;
-  width: 80%;
+  width: 60%;
   border-radius: 6px;
   color: rgb(44, 44, 44);
 }
@@ -112,11 +111,25 @@
 @media screen and (min-width: 355px) and (max-width: 545px) {
   .formItem {
     width: 100%;
+    min-width: 200px !important;
+  }
+
+  .dropzone {
+    padding: 10px;
+    font-size: 10px;
+    max-width: 60%;
   }
 }
 
 @media screen and (max-width: 355px) {
   .formItem {
     width: 100%;
+    min-width: 100px !important;
+  }
+
+  .dropzone {
+    padding: 6px;
+    font-size: 8px;
+    max-width: 60%;
   }
 }

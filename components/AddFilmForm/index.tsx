@@ -123,35 +123,33 @@ const AddFilmForm = () => {
         {/* Genres List - Çoklu Seçim */}
         <FormControl className={`w-full ${styles.formItem}`}>
           <Typography className={styles.formLabel}>Genres</Typography>
-          <div className="flex w-full items-end justify-end">
-            <Select
-              className={styles.formInput}
-              multiple
-              value={formik.values.genre_ids}
-              onChange={(e) => {
-                const selectedValues = Array.isArray(e.target.value)
-                  ? e.target.value
-                  : e.target.value.split(",");
-                formik.setFieldValue("genre_ids", selectedValues);
-              }}
-              size="small"
+          <Select
+            className={styles.formInput}
+            multiple
+            value={formik.values.genre_ids}
+            onChange={(e) => {
+              const selectedValues = Array.isArray(e.target.value)
+                ? e.target.value
+                : e.target.value.split(",");
+              formik.setFieldValue("genre_ids", selectedValues);
+            }}
+            size="small"
+          >
+            {genresList.map((genres) => (
+              <MenuItem key={genres?.id} value={Number(genres?.id)}>
+                {genres?.name}
+              </MenuItem>
+            ))}
+          </Select>
+          {formik.touched.genre_ids && formik.errors.genre_ids && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
             >
-              {genresList.map((genres) => (
-                <MenuItem key={genres?.id} value={Number(genres?.id)}>
-                  {genres?.name}
-                </MenuItem>
-              ))}
-            </Select>
-            {formik.touched.genre_ids && formik.errors.genre_ids && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.genre_ids}
-              </Typography>
-            )}
-          </div>
+              {formik.errors.genre_ids}
+            </Typography>
+          )}
         </FormControl>
         {/* Original Language */}
         <FormControl className={styles.formItem}>
@@ -325,8 +323,8 @@ const AddFilmForm = () => {
             onChange={(event, newValue) =>
               formik.setFieldValue("vote", newValue)
             }
-            icon={<StarIcon fontSize="large" />}
-            emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="large" />}
+            icon={<StarIcon fontSize="medium" />}
+            emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="medium" />}
           />
           {formik.touched.vote && formik.errors.vote && (
             <Typography

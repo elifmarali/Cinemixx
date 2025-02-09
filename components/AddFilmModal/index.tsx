@@ -5,6 +5,7 @@ import { IoClose } from "react-icons/io5";
 import AddFilmForm from "../AddFilmForm";
 import { useAddModalContext } from "@/context/AddFilmModal";
 import { CiSquarePlus } from "react-icons/ci";
+import styles from "@/components/AddFilmModal/styles.module.css";
 
 const customStyles = {
   overlay: {
@@ -21,7 +22,7 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
     zIndex: 1010,
     minWidth: "60vw",
-    maxWidth: "60vw",
+    maxWidth: "70vw",
     border: "none",
     borderRadius: "10px",
     background: "#eeeeee",
@@ -36,11 +37,7 @@ function AddFilmModal() {
   const { addModal, closeModal } = useAddModalContext();
 
   return (
-    <Modal
-      isOpen={addModal}
-      onRequestClose={closeModal}
-      style={customStyles}
-    >
+    <Modal isOpen={addModal} onRequestClose={closeModal} style={customStyles}>
       <div className={`flex justify-between item-center w-[100%] mb-5`}>
         <div className="w-[10%]" />
         <div className="w-[90%] flex justify-center items-center gap-2 text-3xl font-black text-[#2f2f2f]">
