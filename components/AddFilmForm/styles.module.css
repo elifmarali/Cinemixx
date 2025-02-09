@@ -19,7 +19,7 @@
 }
 
 .formLabel {
-  width: 30%;
+  width: 18%;
   font-size: 16px !important;
   color: rgb(47, 47, 47);
   font-weight: 600 !important;
@@ -27,7 +27,7 @@
 
 .formInput {
   max-width: 20vw !important;
-  width: 70%;
+  width: 29%;
   border-radius: 6px;
   color: rgb(44, 44, 44);
 }

@@ -205,226 +205,210 @@ const AddFilmForm = () => {
         {/* Overview */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Overview</Typography>
-          <div className="flex flex-col w-full items-end">
-            <TextField
-              size="small"
-              className={styles.formInput}
-              name="overview"
-              value={formik.values.overview}
-              onChange={formik.handleChange}
-              multiline
-              maxRows={5}
-            />
-            {formik.touched.overview && formik.errors.overview && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.overview}
-              </Typography>
-            )}
-          </div>
+          <TextField
+            size="small"
+            className={styles.formInput}
+            name="overview"
+            value={formik.values.overview}
+            onChange={formik.handleChange}
+            multiline
+            maxRows={5}
+          />
+          {formik.touched.overview && formik.errors.overview && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.overview}
+            </Typography>
+          )}
         </FormControl>
         {/* Popularity */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Popularity</Typography>
-          <div className="flex flex-col w-full items-end">
-            <TextField
-              size="small"
-              className={styles.formInput}
-              name="popularity"
-              value={formik.values.popularity}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.popularity && formik.errors.popularity && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.popularity}
-              </Typography>
-            )}
-          </div>
+          <TextField
+            size="small"
+            className={styles.formInput}
+            name="popularity"
+            value={formik.values.popularity}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.popularity && formik.errors.popularity && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.popularity}
+            </Typography>
+          )}
         </FormControl>
         {/* Release Date */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Release Date</Typography>
-          <div className="flex flex-col w-full items-end">
-            <DatePicker
-              className={styles.formInput}
-              name="release_date"
-              value={
-                formik.values.release_date
-                  ? dayjs(formik.values.release_date)
-                  : null
+          <DatePicker
+            className={styles.formInput}
+            name="release_date"
+            value={
+              formik.values.release_date
+                ? dayjs(formik.values.release_date)
+                : null
+            }
+            onChange={(date: Dayjs | null) => {
+              if (date) {
+                const formattedDate = date.format("YYYY-MM-DD");
+                formik.setFieldValue("release_date", formattedDate);
               }
-              onChange={(date: Dayjs | null) => {
-                if (date) {
-                  const formattedDate = date.format("YYYY-MM-DD");
-                  formik.setFieldValue("release_date", formattedDate);
-                }
-              }}
-              format="DD/MM/YYYY"
-              slotProps={{ textField: { size: "small" } }}
-            />
+            }}
+            format="DD/MM/YYYY"
+            slotProps={{ textField: { size: "small" } }}
+          />
 
-            {formik.touched.release_date && formik.errors.release_date && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.release_date}
-              </Typography>
-            )}
-          </div>
+          {formik.touched.release_date && formik.errors.release_date && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.release_date}
+            </Typography>
+          )}
         </FormControl>
         {/* Title */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Title</Typography>
-          <div className="flex flex-col w-full items-end">
-            <TextField
-              size="small"
-              className={styles.formInput}
-              name="title"
-              value={formik.values.title}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.title && formik.errors.title && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.title}
-              </Typography>
-            )}
-          </div>
+          <TextField
+            size="small"
+            className={styles.formInput}
+            name="title"
+            value={formik.values.title}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.title && formik.errors.title && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.title}
+            </Typography>
+          )}
         </FormControl>
         {/* Video Checkbox */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Video</Typography>
-          <div className="flex flex-col w-full items-end">
-            <Checkbox
-              sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
-              onChange={(e) => {
-                formik.setFieldValue("video", e.target.checked);
-              }}
-              className={styles.formCheckbox}
-            />
-            {formik.touched.video && formik.errors.video && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.video}
-              </Typography>
-            )}
-          </div>
+          <Checkbox
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
+            onChange={(e) => {
+              formik.setFieldValue("video", e.target.checked);
+            }}
+            className={styles.formCheckbox}
+          />
+          {formik.touched.video && formik.errors.video && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.video}
+            </Typography>
+          )}
         </FormControl>
         {/* Vote */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Vote</Typography>
-          <div className="flex flex-col w-full items-end">
-            <Rating
-              name="text-feedback"
-              value={formik.values.vote}
-              precision={0.5}
-              onChange={(event, newValue) =>
-                formik.setFieldValue("vote", newValue)
-              }
-              icon={<StarIcon fontSize="large" />}
-              emptyIcon={
-                <StarIcon style={{ opacity: 0.55 }} fontSize="large" />
-              }
-            />
-            {formik.touched.vote && formik.errors.vote && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.vote}
-              </Typography>
-            )}
-          </div>
+          <Rating
+            name="text-feedback"
+            value={formik.values.vote}
+            precision={0.5}
+            onChange={(event, newValue) =>
+              formik.setFieldValue("vote", newValue)
+            }
+            icon={<StarIcon fontSize="large" />}
+            emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="large" />}
+          />
+          {formik.touched.vote && formik.errors.vote && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.vote}
+            </Typography>
+          )}
         </FormControl>
         {/* Upload File */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Upload File</Typography>
-          <div className="flex flex-col w-full items-end">
-            <Dropzone
-              onDrop={(acceptedFiles) => {
-                if (acceptedFiles.length > 0) {
-                  formik.setFieldValue("file", acceptedFiles[0]);
-                }
-              }}
-              /*accept={{ "image/*": [".png", ".jpg", ".jpeg"] }}*/
-              maxFiles={1}
-            >
-              {({ getRootProps, getInputProps }) => (
-                <div
-                  {...getRootProps({
-                    className: styles.dropzone,
-                  })}
-                >
-                  <input {...getInputProps()} />
-                  <p>
-                    Dosyayı buraya sürükleyip bırakın veya dosya seçmek için
-                    tıklayın.
-                  </p>
-                </div>
-              )}
-            </Dropzone>
-            {/* Dosya Görüntüleme ve Silme */}
-            {formik.values.file && (
-              <div className="w-[92%] flex items-center justify-between gap-2 my-2">
-                {/* Dosya Adı */}
-                <p className="font-medium text-[#2f2f2f]">
-                  {`${formik.values.file.name.slice(
-                    0,
-                    5
-                  )}..${formik.values.file.name.slice(-3)}`}
+          <Dropzone
+            onDrop={(acceptedFiles) => {
+              if (acceptedFiles.length > 0) {
+                formik.setFieldValue("file", acceptedFiles[0]);
+              }
+            }}
+            /*accept={{ "image/*": [".png", ".jpg", ".jpeg"] }}*/
+            maxFiles={1}
+          >
+            {({ getRootProps, getInputProps }) => (
+              <div
+                {...getRootProps({
+                  className: styles.dropzone,
+                })}
+              >
+                <input {...getInputProps()} />
+                <p>
+                  Dosyayı buraya sürükleyip bırakın veya dosya seçmek için
+                  tıklayın.
                 </p>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    className="bg-[#F0A46F] text-white py-1 px-3 rounded-lg hover:bg-orange-500"
-                    onClick={() => {
-                      const url =
-                        formik.values.file &&
-                        URL.createObjectURL(formik.values.file);
-                      if (url) {
-                        window.open(url, "_blank");
-                      }
-                    }}
-                  >
-                    Show
-                  </button>
-                  {/* Sil Butonu */}
-                  <button
-                    type="button"
-                    className="bg-[#E34139] text-white py-1 px-3 rounded-lg hover:bg-red-600"
-                    onClick={() => formik.setFieldValue("file", null)}
-                  >
-                    Remove
-                  </button>
-                </div>
               </div>
             )}
-            {formik.touched.file && formik.errors.file && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.file}
-              </Typography>
-            )}
-          </div>
+          </Dropzone>
+          {/* Dosya Görüntüleme ve Silme */}
+          {formik.values.file && (
+            <div className="w-[92%] flex items-center justify-between gap-2 my-2">
+              {/* Dosya Adı */}
+              <p className="font-medium text-[#2f2f2f]">
+                {`${formik.values.file.name.slice(
+                  0,
+                  5
+                )}..${formik.values.file.name.slice(-3)}`}
+              </p>
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  className="bg-[#F0A46F] text-white py-1 px-3 rounded-lg hover:bg-orange-500"
+                  onClick={() => {
+                    const url =
+                      formik.values.file &&
+                      URL.createObjectURL(formik.values.file);
+                    if (url) {
+                      window.open(url, "_blank");
+                    }
+                  }}
+                >
+                  Show
+                </button>
+                {/* Sil Butonu */}
+                <button
+                  type="button"
+                  className="bg-[#E34139] text-white py-1 px-3 rounded-lg hover:bg-red-600"
+                  onClick={() => formik.setFieldValue("file", null)}
+                >
+                  Remove
+                </button>
+              </div>
+            </div>
+          )}
+          {formik.touched.file && formik.errors.file && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.file}
+            </Typography>
+          )}
         </FormControl>
         {/* Submit Button */}
         <div className="w-full flex justify-end mt-5">

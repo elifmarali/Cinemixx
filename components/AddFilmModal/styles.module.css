@@ -1,0 +1,11 @@
+@media screen and (min-width: 355px) and (max-width: 545px) {
+    .modalContainer {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 355px) {
+    .modalContainer {
+        max-width: 90%;
+    }
+}
