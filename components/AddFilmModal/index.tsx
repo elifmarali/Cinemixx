@@ -37,10 +37,13 @@ function AddFilmModal() {
   const { addModal, closeModal } = useAddModalContext();
 
   return (
-    <Modal isOpen={addModal} onRequestClose={closeModal} style={customStyles}>
-      <div
-        className={`flex justify-between item-center w-[100%] mb-5 ${styles.modalContainer}`}
-      >
+    <Modal
+      isOpen={addModal}
+      onRequestClose={closeModal}
+      style={customStyles}
+      className={styles.modalContainer}
+    >
+      <div className={`flex justify-between item-center w-[100%] mb-5`}>
         <div className="w-[10%]" />
         <div className="w-[90%] flex justify-center items-center gap-2 text-3xl font-black text-[#2f2f2f]">
           <CiSquarePlus size={35} className="text-[#E34139]" />
