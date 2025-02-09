@@ -63,7 +63,11 @@ function BannerSection({ contentType, random, param }: IBannerParams) {
             <div className="text-sm">({firstPopularFilm?.vote_count})</div>
           )}
         </div>
-        <p className={` ${!contentType ? styles.sortContent : ""}`}>
+        <p
+          className={`${!contentType ? styles.sortContent : ""} ${
+            styles.bannerDesc
+          }`}
+        >
           {firstPopularFilm?.overview}
         </p>
         <div className="flex flex-row items-center gap-6 mt-4">
