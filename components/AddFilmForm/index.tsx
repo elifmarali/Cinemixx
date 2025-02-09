@@ -103,24 +103,22 @@ const AddFilmForm = () => {
         {/* Adult Checkbox */}
         <FormControl className={styles.formItem}>
           <Typography className={styles.formLabel}>Adult</Typography>
-          <div className="flex flex-col w-full items-end">
-            <Checkbox
-              className={styles.formCheckbox}
-              sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
-              onChange={(e) => {
-                formik.setFieldValue("adult", e.target.checked);
-              }}
-            />
-            {formik.touched.adult && formik.errors.adult && (
-              <Typography
-                color="error"
-                gutterBottom
-                className={styles.errorMessage}
-              >
-                {formik.errors.adult}
-              </Typography>
-            )}
-          </div>
+          <Checkbox
+            className={styles.formCheckbox}
+            sx={{ "& .MuiSvgIcon-root": { fontSize: 22 } }}
+            onChange={(e) => {
+              formik.setFieldValue("adult", e.target.checked);
+            }}
+          />
+          {formik.touched.adult && formik.errors.adult && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.adult}
+            </Typography>
+          )}
         </FormControl>
         {/* Genres List - Çoklu Seçim */}
         <FormControl className={`w-full ${styles.formItem}`}>
@@ -160,56 +158,49 @@ const AddFilmForm = () => {
           <Typography className={styles.formLabel}>
             Original Language
           </Typography>
-          <div className="flex flex-col w-full items-end">
-            <Select
-              name="original_language"
-              className={styles.formInput}
-              value={formik.values.original_language}
-              onChange={formik.handleChange}
-              size="small"
-            >
-              {originalLanguage.map((language: ILanguage) => (
-                <MenuItem
-                  key={language?.shortening}
-                  value={language?.shortening}
-                >
-                  {language?.name}
-                </MenuItem>
-              ))}
-            </Select>
-            {formik.touched.original_language &&
-              formik.errors.original_language && (
-                <Typography
-                  color="error"
-                  gutterBottom
-                  className={styles.errorMessage}
-                >
-                  {formik.errors.original_language}
-                </Typography>
-              )}
-          </div>
-        </FormControl>
-        {/* Original Title */}
-        <FormControl className={styles.formItem}>
-          <Typography className={styles.formLabel}>Original Title</Typography>
-          <div className="flex flex-col w-full items-end">
-            <TextField
-              size="small"
-              className={styles.formInput}
-              name="original_title"
-              value={formik.values.original_title}
-              onChange={formik.handleChange}
-            />
-            {formik.touched.original_title && formik.errors.original_title && (
+          <Select
+            name="original_language"
+            className={styles.formInput}
+            value={formik.values.original_language}
+            onChange={formik.handleChange}
+            size="small"
+          >
+            {originalLanguage.map((language: ILanguage) => (
+              <MenuItem key={language?.shortening} value={language?.shortening}>
+                {language?.name}
+              </MenuItem>
+            ))}
+          </Select>
+          {formik.touched.original_language &&
+            formik.errors.original_language && (
               <Typography
                 color="error"
                 gutterBottom
                 className={styles.errorMessage}
               >
-                {formik.errors.original_title}
+                {formik.errors.original_language}
               </Typography>
             )}
-          </div>
+        </FormControl>
+        {/* Original Title */}
+        <FormControl className={styles.formItem}>
+          <Typography className={styles.formLabel}>Original Title</Typography>
+          <TextField
+            size="small"
+            className={styles.formInput}
+            name="original_title"
+            value={formik.values.original_title}
+            onChange={formik.handleChange}
+          />
+          {formik.touched.original_title && formik.errors.original_title && (
+            <Typography
+              color="error"
+              gutterBottom
+              className={styles.errorMessage}
+            >
+              {formik.errors.original_title}
+            </Typography>
+          )}
         </FormControl>
         {/* Overview */}
         <FormControl className={styles.formItem}>
