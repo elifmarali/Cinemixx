@@ -41,7 +41,6 @@ function AddFilmModal() {
       isOpen={addModal}
       onRequestClose={closeModal}
       style={customStyles}
-      className={styles.modalContainer}
     >
       <div className={`flex justify-between item-center w-[100%] mb-5`}>
         <div className="w-[10%]" />
