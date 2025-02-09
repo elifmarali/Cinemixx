@@ -5,7 +5,6 @@ import { IoClose } from "react-icons/io5";
 import AddFilmForm from "../AddFilmForm";
 import { useAddModalContext } from "@/context/AddFilmModal";
 import { CiSquarePlus } from "react-icons/ci";
-import styles from "@/components/AddFilmModal/styles.module.css";
 
 const customStyles = {
   overlay: {
