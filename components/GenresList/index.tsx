@@ -14,29 +14,26 @@ function GenresList() {
         const res: IGenres[] = await getGenresList();
         setGenresList(res);
       } catch (err: unknown) {
-        if(err instanceof Error){
-          console.error("ERR GetGenresList[GenresListComponent]: ", err.message);
-        }
-        else{
-          console.error("Bilinmeyen bir hata oluştu:", err);
-        }
+        console.error(
+          "ERR GetGenresList[GenresListComponent]: ",
+          err instanceof Error ? err.message : "Bilinmeyen bir hata oluştu"
+        );
       }
     }
     fetchGenres();
   }, []);
 
   return (
-    <div className="grid grid-cols-9 gap-2 max-w-[100%]">
-      {genresList.length > 0 &&
-        genresList.slice(0, 9).map((genresItem) => (
-          <Link
-            key={genresItem.id}
-            href={`/genres/${genresItem.id}`}
-            className={`flex justify-center items-center h-[70px] font-semibold cursor-pointer ${styles.border}`}
-          >
-            {genresItem.name}
-          </Link>
-        ))}
+    <div className={`${styles.genresContainer}`}>
+      {genresList.map((genresItem) => (
+        <Link
+          key={genresItem.id}
+          href={`/genres/${genresItem.id}`}
+          className={`${styles.genreItem}`}
+        >
+          {genresItem.name}
+        </Link>
+      ))}
     </div>
   );
 }

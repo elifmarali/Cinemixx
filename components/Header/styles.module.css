@@ -5,7 +5,41 @@
     width: 100%;
 }
 
-.border{
+.border {
     border: 1px solid #fff;
     padding: 10px;
+}
+
+.addButton {
+    font-size: 22px;
+}
+
+@media screen and (min-width: 355px) and (max-width: 545px) {
+    .headerList {
+        display: none;
+    }
+
+    .logo {
+        width: 120px;
+        height: 40px;
+    }
+
+    .addButton {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 355px) {
+    .headerList {
+        display: none;
+    }
+
+    .logo {
+        width: 100px;
+        height: 30px;
+    }
+
+    .addButton {
+        font-size: 16px;
+    }
 }

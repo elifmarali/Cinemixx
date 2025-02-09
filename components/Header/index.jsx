@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { FaPlayCircle } from "react-icons/fa";
 import { IoMdAdd } from "react-icons/io";
 import AddFilmModal from "../AddFilmModal";
-import logo from "@/assets/logo.png"
+import logo from "@/assets/logo.png";
 import Image from "next/image";
 
 function Header() {
@@ -22,7 +22,7 @@ function Header() {
 
   return (
     <header className={`${styles.header} fluid`}>
-      <AddFilmModal/>
+      <AddFilmModal />
       <div className="flex justify-center items-center w-full">
         <div className="flex justify-between items-center py-3 transition ease-in-out delay-150 py-5 w-full max-w-[90%]">
           {" "}
@@ -30,9 +30,14 @@ function Header() {
             href="/"
             className="flex justify-center items-center text-lg gap-3"
           >
-            <Image src={logo} width={200} height={120}/>
+            <Image
+              src={logo}
+              width={200}
+              height={120}
+              className={styles.logo}
+            />
           </Link>
-          <nav className="flex gap-4">
+          <nav className={`flex gap-4 ${styles.headerList}`}>
             <Link
               href="/movies"
               className={`${
@@ -62,7 +67,7 @@ function Header() {
             className={`rounded-full ${styles.border} cursor-pointer`}
             onClick={() => openModal()}
           >
-            <IoMdAdd className="text-[22px]" />
+            <IoMdAdd className={styles.addButton} />
           </div>
         </div>
       </div>
