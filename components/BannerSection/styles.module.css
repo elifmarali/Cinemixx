@@ -52,11 +52,11 @@
   }
 
   .bannerTitle {
-    font-size: 50px;
+    font-size: 50px !important;
   }
 
   .bannerDesc {
-    font-size: 20px;
+    font-size: 20px !important;
   }
 }
 
@@ -66,10 +66,10 @@
   }
 
   .bannerTitle {
-    font-size: 40px;
+    font-size: 40px !important;
   }
 
   .bannerDesc {
-    font-size: 16px;
+    font-size: 16px !important;
   }
 }

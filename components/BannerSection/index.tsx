@@ -74,10 +74,10 @@ function BannerSection({ contentType, random, param }: IBannerParams) {
           <Link href={`/movies/${firstPopularFilm?.id}`}>
             <Button text="Play" width={300} height={62} />
           </Link>
-          <FavButton />
+          <FavButton/>
         </div>
       </div>
-      <div className={styles.moviePoster}>
+      <div className={styles.moviePoster}> 
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized

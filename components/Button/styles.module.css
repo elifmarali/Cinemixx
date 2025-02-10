@@ -1,4 +1,18 @@
-.playButton{
-    color:#222 ;
-    background-color: #eee;
+.playButton {
+  color: #222;
+  background-color: #eee;
+}
+
+@media screen and (min-width: 355px) and (max-width: 545px) {
+  .playButton {
+    width: 200px !important;
+    height: 50px !important;
+  }
+}
+
+@media screen and (max-width: 355px) {
+  .playButton {
+    width: 120px !important;
+    height: 42px !important;
+  }
 }

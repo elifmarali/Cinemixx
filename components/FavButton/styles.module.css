@@ -2,3 +2,15 @@
     border: 1px solid #fff;
     padding: 10px;
 }
+
+@media screen and (min-width: 355px) and (max-width: 545px) {
+    .favButton {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 355px) {
+    .favButton {
+        font-size: 16px;
+    }
+}

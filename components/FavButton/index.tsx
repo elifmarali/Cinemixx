@@ -4,7 +4,7 @@ import styles from "@/components/FavButton/styles.module.css"
 function FavButton() {
     return (
         <div className={`rounded-full ${styles.border} cursor-pointer`}>
-            <FaRegHeart />
+            <FaRegHeart className={styles.favButton}/>
         </div>
     )
 }
